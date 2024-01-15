@@ -1,38 +1,760 @@
-.App {
+body {
+  font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial,
+    'Lucida Grande', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  /* background: #494c66; */
+
+  /* height: 100vh; */
+  /* color: #EEE; */
+}
+
+#player {
+  max-width: 100vw;
+  opacity: 0.5;
+  position: relative;
+  top: 5em;
+}
+
+.background {
+  background: url('./background.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 100%;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.95;
+  z-index: 0;
+}
+
+#fh-addcal
+{
+  display: block;
+  color: #eee;
+  height: 35px;
+  line-height: 35px;
+  margin-bottom: 10px;
+  padding-left: 40px;
+  background: #78a600 url(//c.tadst.com/gfx/n/i/ical-save.png) 0 no-repeat;
+  font-size: 13px;
+  width: 100%;
+}
+
+.font-serif
+{
+  font-family: Playfair Display,serif;
+  font-size: 63px;
+}
+
+.font-cursive
+{
+  font-family: Lobster Two,cursive;
+}
+
+.font-sanserif
+{
+  font-family: Roboto,sans-serif;
+  font-size: 63px;
+}
+
+.font-slab
+{
+  font-family: Roboto Slab,serif;
+  font-size: 63px;
+}
+
+.font-hand
+{
+  font-family: Lobster Two,cursive;
+}
+
+.csvg
+{
+  position: relative;
+  background: #f8f8f8;
+}
+
+.csvg.fullscreen
+{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2000;
+}
+
+.csvg.fullscreen .csvg-background
+{
+  height: 100%;
+  background-size: contain;
+  background-color: #444;
+}
+
+.csvg.fullscreen .csvg-controls .icon-fullscreen.close
+{
+  display: block;
+}
+
+.csvg.fullscreen .csvg-controls .icon-fullscreen.open
+{
+  display: none;
+}
+
+.csvg-counters
+{
+  display: flex;
+  justify-content: space-between;
+}
+
+.csvg-background
+{
+  width: 100%;
+  padding-top: 35%;
+  position: relative;
+}
+
+.csvg-background img,.csvg-background svg
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+}
+
+.csvg-background svg
+{
+  height: 100%;
+}
+
+.csvg-background img,.csvg-countdown
+{
+  bottom: 0;
+  margin: auto;
+}
+.ready-true.csvg-countdown{
+  margin-top: 60px;
+}
+.csvg-countdown
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 366px;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+.csvg-digit
+{
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: center;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+  margin-right: 4px;
+}
+
+.csvg-digit-number
+{
+  font-size: 107px;
+  padding: 3px 29px;
+  background: #38414a;
+  background: rgba(40,50,61,.62);
+  font-family: Roboto,sans-serif;
+  font-weight: 300;
+}
+
+.csvg-digit[data-tad-bind=seconds] .csvg-digit-number
+{
+  color: #ee5486;
+}
+
+.csvg-digit-label
+{
+  padding: 5px;
+  font-size: 23px;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.csvg-title.long
+{
+  font-size: 50px;
+}
+
+.csvg-date
+{
+  font-family: Roboto,sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  margin-top: 10px;
+  color: #fff;
+  letter-spacing: .5px;
+}
+
+.csvg-date a
+{
+  color: #f8eab9;
+}
+
+.csvg.completed .csvg-date span[data-type=until]
+{
+  color: red;
+}
+
+.csvg-controls
+{
+  position: absolute;
+  top: 50px;
+  left: 44px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 1;
+  background: #ee5486;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.2);
+  cursor: pointer;
+}
+
+.csvg-controls a
+{
+  display: block;
+  color: #fff;
+}
+
+.csvg-controls i
+{
+  width: 100%;
+  height: 56px;
+  display: block;
+  background: url(//c.tadst.com/gfx/cd/menu-spr.png) 0 -336px no-repeat #ee5486;
+  z-index: 1;
+}
+
+.csvg-controls .menu a
+{
+  color: #454545;
+  position: relative;
+  display: block;
+  padding: 20px 0 20px 56px;
+  font-size: 16px;
+  font-family: Roboto,sans-serif;
+}
+
+.csvg-controls .menu a:before
+{
+  content: "";
+  width: 56px;
+  height: 56px;
+  background: url(//c.tadst.com/gfx/cd/menu-spr.png) no-repeat;
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+
+.csvg-controls .menu a:hover
+{
+  background-color: rgba(0,0,0,.05);
+  text-decoration: none;
+}
+
+.csvg-controls .menu .icon-fullscreen:before
+{
+  background-position: 0 0;
+}
+
+.csvg-controls .menu .icon-world:before
+{
+  background-position: 0 -56px;
+}
+
+.csvg-controls .menu .icon-text:before
+{
+  background-position: 0 -112px;
+}
+
+.csvg-controls .menu .icon-demo:before
+{
+  background-position: 0 -168px;
+}
+
+.csvg-controls .menu .icon-new:before
+{
+  background-position: 0 -224px;
+}
+
+.csvg-controls .menu .icon-edit:before
+{
+  background-position: 0 -280px;
+}
+
+.csvg-controls .menu .icon-demo,.csvg-controls .menu .icon-fullscreen.close
+{
+  display: none;
+}
+
+.csvg-controls.show
+{
+  transition: height .2s ease-in,width .2s ease-in,background-color .8s ease-in;
+  border-radius: 0;
+  background: #fff;
+  width: 235px;
+  height: 359px;
+  border-bottom: 8px solid #ee5486;
+}
+
+.csvg-controls.show .menu
+{
+  display: block;
+}
+
+.csvg.hassvg .csvg-controls.show
+{
+  height: 418px;
+}
+
+.csvg.hassvg .csvg-controls .icon-demo
+{
+  display: block;
+}
+
+.csvg-controls.show i
+{
+  animation-name: none;
+}
+
+.bg-sect
+{
+  border-bottom: 1px dotted #ccc;
+  background-color: #f8f8f8;
+}
+
+#disclaimer
+{
+  background: #f8f8f8;
+  padding: 5px 0;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+@media only screen and (max-width:64em)
+{
+  .csvg-countdown
+  {
+    height: 550px;
+  }
+  .csvg-title
+  {
+    font-size: 40px;
+  }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  .csvg-title.long
+  {
+    font-size: 30px;
+  }
+
+  .csvg-digit-number
+  {
+    font-size: 50px;
+  }
+
+  .csvg-digit-label
+  {
+    font-size: 12px;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+@media only screen and (max-width:37.438em)
+{
+  #disclaimer
+  {
+    padding-top: 24px;
+  }
+
+  #disclaimer p
+  {
+    margin: 0;
+  }
+
+  #disclaimer p a
+  {
+    display: block;
+  }
+
+  .csvg
+  {
+    padding-top: 40px;
+  }
+
+  h1.csvg-title
+  {
+    font-size: 50px;
+    /* position: absolute;
+    top: 8px;
+    left: 0;
+    z-index: 2;
+    padding-left: 56px;
+    width: 100%;
+    pointer-events: none;
+    text-align: left;
+    margin: 0; */
+  }
+
+  .csvg-title.long
+  {
+    font-size: 16px;
+  }
+
+  .csvg-date
+  {
+    color: #000;
+    margin-top: 0;
+    font-size: 12px;
+    display: none;
+  }
+
+  .csvg-date a
+  {
+    color: #556bb5;
+  }
+
+  .csvg-countdown
+  {
+    transform: none;
+    color: #fff;
+    /* position: static; */
+    /* height: 100px; */
+    z-index: 1;
+  }
+
+  .csvg-controls
+  {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background: #ee5486;
+    border-radius: 0;
+    z-index: 0;
+  }
+
+  .csvg-controls i
+  {
+    background-position: 0 -344px;
+    height: 40px;
+  }
+
+  .csvg-controls .menu a
+  {
+    height: 40px;
+    padding: 12px 0 12px 56px;
+  }
+
+  .csvg-controls .menu a:before
+  {
+    content: "";
+    width: 56px;
+    height: 40px;
+    margin-top: -8px;
+  }
+
+  .csvg-controls.show
+  {
+    width: 100%;
+    height: 288px;
+    z-index: 1;
+  }
+
+  .csvg-digit
+  {
+    width: 25%;
+    margin: 0;
+  }
+
+  .hasWeeks .csvg-digit
+  {
+    width: 20%;
+    margin: 0;
+  }
+
+  .csvg-digit-number
+  {
+    font-size: 12vw;
+    padding: 3px 4px;
+    background: rgba(40,50,61,.8);
+  }
+
+  .csvg-digit-label
+  {
+    font-size: 12px;
+    text-align: center;
+  }
+
+  .csvg-usermsg
+  {
+    color: #000;
+    margin-bottom: 5px;
+  }
+
+  .csvg.fullscreen
+  {
+    background: #444;
+  }
+
+  .csvg.fullscreen .csvg-background
+  {
+    position: relative;
+    bottom: auto;
+    height: auto;
+  }
+
+  .csvg.fullscreen .csvg-background img
+  {
+    bottom: auto;
+  }
+
+  .csvg.fullscreen .csvg-date,.csvg.fullscreen .csvg-digit-label,.csvg.fullscreen .csvg-usermsg
+  {
+    color: #fff;
+  }
+
+  .generic .csvg-digit
+  {
+    margin-top: 25px;
+  }
+
+  .generic .csvg-countdown
+  {
+    position: absolute;
+    height: auto;
+    margin-top: 40px;
+  }
+
+  .generic h1.csvg-title
+  {
+    margin-top: -40px;
+  }
+
+  .generic .csvg-digit-number
+  {
+    background: rgba(40,50,61,.28);
+  }
+
+  .generic .csvg-date,.generic .csvg-digit-label
+  {
+    color: #fff;
+  }
+
+  .generic .csvg-date a
+  {
+    color: #f8eab9;
+  }
+
+  .generic .csvg-controls.show
+  {
+    z-index: 10;
+  }
+
+  .csvg-counters
+  {
+    flex-direction: column;
+  }
+}
+
+.csvg-el__wrap
+{
+  color: #454545;
+  flex-grow: 0;
+  font-size: 24px;
+  padding-left: 64px;
+  margin-left: 64px;
+  border-left: 1px solid #ccc;
+}
+
+@media only screen and (min-width:64.063em) and (max-width:90em)
+{
+  .csvg-el__wrap
+  {
+    font-size: 22px;
+  }
+}
+
+@media only screen and (max-width:64em)
+{
+  .csvg-el__wrap
+  {
+    font-size: 18px;
+  }
+}
+
+#el_s2
+{
+  color: #ee5486;
+}
+
+.el-item
+{
+  margin-bottom: 12px;
+  white-space: nowrap;
+}
+
+.el-item__data
+{
+  font-weight: 700;
+  margin-right: 6px;
+}
+
+.plain-text .csvg-digit-number
+{
+  font-size: 80px;
+}
+
+@media only screen and (min-width:37.5em) and (max-width:64em)
+{
+  .plain-text .csvg-digit-number
+  {
+    font-size: 6s0px;
+  }
+}
+
+.plain-text .csvg-date,.plain-text .csvg-digit-label,.plain-text .csvg-digit-number,.plain-text .csvg-title
+{
+  color: #454545;
+  background: none;
+}
+
+@media only screen and (min-width:64.063em) and (max-width:90em)
+{
+  .christmas .csvg-date,.christmas .csvg-digit-label
+  {
+    color: #777;
+  }
+
+  .wedding .csvg-digit-label
+  {
+    color: #444;
+  }
+
+  .wedding #el_s1t
+  {
+    color: #c3748e;
+  }
+}
+
+@media only screen and (min-width:37.5em) and (max-width:64em)
+{
+  .christmas .csvg-date,.christmas .csvg-digit-label
+  {
+    color: #777;
+  }
+
+  .wedding .csvg-digit-label
+  {
+    color: #444;
+  }
+
+  .wedding #el_s1t
+  {
+    color: #c3748e;
+  }
+}
+
+.american-football .csvg-date,.american-football .csvg-digit-label,.basketball .csvg-date,.basketball .csvg-digit-label,.football .csvg-date,.football .csvg-digit-label,.party .csvg-date,.retirement .csvg-date
+{
+  color: #555;
+}
+
+@media only screen and (min-width:90.063em)
+{
+  .election .csvg-date
+  {
+    color: #777;
+  }
+}
+
+.csvg-title{font-size:70px;margin:0 auto;overflow:hidden;text-overflow:ellipsis;color:#FFF;border:none}
+
+
+.is-alive {
+  color: #434979;
+}
+
+a {
+  text-decoration: none;
+  color: #FF0000;
+  font-weight: bold;
+}
+
+img {
+  max-width: 100%;
+}
+
+nav {
+  width: 100%;
+  background: #108db8;
+}
+
+nav a {
   color: white;
+  padding: 1rem;
+  display: inline-block;
 }
 
-.App-link {
-  color: #61dafb;
+.content {
+  padding: 1rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.csvg-seconds {
+  width: 38% !important;
+}
+
+.hand:hover{
+  cursor: pointer;
+}
+.hand {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  animation-iteration-count:infinite;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-4px, 0, 0);
   }
-  to {
-    transform: rotate(360deg);
+  20%, 80% {
+    transform: translate3d(4px, 0, 0);
   }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+
+.screenshot{
+  width: 33%;
+  text-align: center;
+  /* position: absolute; */
+}
+
+.screenshot:hover{
+  cursor: pointer;
 }
