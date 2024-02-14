@@ -146,7 +146,7 @@ function App() {
       <div className={`csvg-countdown hasWeeks`}>
         {/* <AudioPlayer src={BGM} ready={ready}/> */}
         {/* <img className="screenshot" src={screenshot} alt="black and white screenshot"/> */}
-        <h1 className="csvg-title font-cursive">
+        <h1 className="csvg-title font-cursive title">
         Happy working in Academia Sinica!
         </h1>
         <Counter/>

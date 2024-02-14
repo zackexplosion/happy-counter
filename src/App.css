@@ -758,3 +758,8 @@ nav a {
 .screenshot:hover{
   cursor: pointer;
 }
+
+h1.title {
+    /* 1 pixel black shadow to left, top, right and bottom */
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+}
