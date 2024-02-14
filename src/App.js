@@ -132,7 +132,7 @@ class Counter extends React.Component {
         // width: '640',
         videoId: '9jK-NcRmVcw',
         playerVars: {
-          'autoplay': true,
+          // 'autoplay': true,
           'playsinline': 1,
           'start': 117,
         },
@@ -163,7 +163,7 @@ function App() {
         <h1 className="csvg-title font-cursive title">
           Happy working in Academia Sinica!
         </h1>
-        <Counter />
+        <Counter className="counter" />
         <div id="player"></div>
       </div>
       {/* <iframe width="560" height="315" src="https://www.youtube.com/embed/9jK-NcRmVcw?si=IrvbggH-FUoYbr3d&amp;controls=0"></iframe> */}
